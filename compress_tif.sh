@@ -1,6 +1,10 @@
 #!/bin/bash
 # Applies lzw compression to an uncompressed tiff.
 
+# just do this:
+# mogrify -auto-orient -compress lzw *.tif
+
+
 for FILE in "$@"; do
 	echo $FILE
 	if [ ! -f "${FILE}" ]; then 
