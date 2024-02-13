@@ -11,18 +11,19 @@ resize_and_rename() {
 	local size="$2"
 	local density="$3"
 	local suffix="$4"
-	local file="$5"
+	local input_file="$5"
 
 	# Check if the output directory exists, create if not
 	mkdir -p "$output_dir"
 
 	# Resize while converting to JPG
-	mogrify -resize "$size" -density "$density" -units PixelsPerInch -format jpg "$file"
+	input_file_basename=$(basename "$input_file")
+	output_file="${input_file_basename%.*}-$suffix.jpg"
+	magick "$input_file" -resize "$size" -density "$density" -units PixelsPerInch -format jpg "$output_file"
 
-	# Rename the converted JPG file
-	if [ -f "${file%.*}.jpg" ]; then
-		file_basename=$(basename "$file")
-		mv "${file%.*}.jpg" "$output_dir/${file_basename%.*}-$suffix.jpg"
+	# Move the converted JPG file
+	if [ -f "$output_file" ]; then
+		mv "$output_file" "$output_dir"
 	fi
 }
 
