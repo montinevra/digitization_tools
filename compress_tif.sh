@@ -22,6 +22,6 @@ for FILE in "$@"; do
 		continue
 	fi
 	echo "	it uncompresed"
-	magick -compress lzw "${FILE}" "${FILE}"
+	convert -auto-orient -compress lzw "${FILE}" "${FILE}"
 	echo "	but it compresed nao lol"
 done

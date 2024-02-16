@@ -19,7 +19,7 @@ resize_and_rename() {
 	# Resize while converting to JPG
 	input_file_basename=$(basename "$input_file")
 	output_file="${input_file_basename%.*}-$suffix.jpg"
-	magick "$input_file" -resize "$size" -density "$density" -units PixelsPerInch -format jpg "$output_file"
+	convert "$input_file" -resize "$size" -density "$density" -units PixelsPerInch -format jpg "$output_file"
 
 	# Move the converted JPG file
 	if [ -f "$output_file" ]; then
@@ -28,7 +28,7 @@ resize_and_rename() {
 }
 
 # Check if ImageMagick is installed
-if ! command_exists mogrify; then
+if ! command_exists convert; then
 	echo "ImageMagick is required but not installed. Aborting."
 	exit 1
 fi
