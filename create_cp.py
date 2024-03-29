@@ -43,7 +43,7 @@ def main():
 		file_content = file.read()
 	modified_content = file_content.replace('#hugin_optimizerMasterSwitch 1', '#hugin_optimizerMasterSwitch 0')
 	modified_content = modified_content.replace('v p1\nv y1', 'v TrX1\nv TrY1\nv TrZ1')
-	modified_content = modified_content.replace('p f2 w3000 h1500 v360  k0 E0 R0 n"TIFF_m c:LZW r:CROP"', 'p f0 w3000 h3500 v60  k0 E0 R0 n"TIFF_m c:LZW r:CROP"') # Rectilinear projection
+	modified_content = modified_content.replace('p f2 w3000 h1500 v360', 'p f0 w3000 h3500 v60') # Rectilinear projection
 	with open(project_file, 'w') as file:
 		file.write(modified_content)
 
