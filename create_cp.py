@@ -27,7 +27,7 @@ def main():
 	if not prefix:
 		first_input_file = os.path.basename(input_files[0])
 		last_input_file = os.path.basename(input_files[-1])
-		prefix = os.path.splitext(first_input_file)[0] + '-' + os.path.splitext(last_input_file)[0]
+		prefix = os.path.splitext(first_input_file)[0] + ' - ' + os.path.splitext(last_input_file)[0]
 	project_file = prefix + ".pto"
 
 	commands = (
